@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/arch_iso" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
