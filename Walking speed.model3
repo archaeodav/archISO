@@ -17,13 +17,39 @@
         <Option type="bool" value="true" name="parameters_collapsed"/>
       </Option>
       <Option type="QString" value="rasterize land surface" name="component_description"/>
-      <Option type="double" value="33.02520765476811" name="component_height"/>
-      <Option type="double" value="836.3692026426052" name="component_pos_x"/>
-      <Option type="double" value="620.9872389599961" name="component_pos_y"/>
+      <Option type="double" value="30" name="component_height"/>
+      <Option type="double" value="734.8930897339208" name="component_pos_x"/>
+      <Option type="double" value="571.0519100580415" name="component_pos_y"/>
       <Option type="double" value="125.37821118238742" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="gdal:rasterize_1" name="id"/>
-      <Option name="outputs"/>
+      <Option type="Map" name="outputs">
+        <Option type="Map" name="Cost_RASTER">
+          <Option type="QString" value="gdal:rasterize_1" name="child_id"/>
+          <Option type="QString" value="" name="color"/>
+          <Option type="Map" name="comment">
+            <Option type="QString" value="" name="color"/>
+            <Option type="QString" value="" name="component_description"/>
+            <Option type="double" value="60" name="component_height"/>
+            <Option type="double" value="0" name="component_pos_x"/>
+            <Option type="double" value="0" name="component_pos_y"/>
+            <Option type="double" value="100" name="component_width"/>
+            <Option type="bool" value="true" name="outputs_collapsed"/>
+            <Option type="bool" value="true" name="parameters_collapsed"/>
+          </Option>
+          <Option type="QString" value="Cost_RASTER" name="component_description"/>
+          <Option type="double" value="30" name="component_height"/>
+          <Option type="double" value="0" name="component_pos_x"/>
+          <Option type="double" value="0" name="component_pos_y"/>
+          <Option type="double" value="200" name="component_width"/>
+          <Option type="invalid" name="default_value"/>
+          <Option type="bool" value="false" name="mandatory"/>
+          <Option type="QString" value="Cost_RASTER" name="name"/>
+          <Option type="QString" value="OUTPUT" name="output_name"/>
+          <Option type="bool" value="true" name="outputs_collapsed"/>
+          <Option type="bool" value="true" name="parameters_collapsed"/>
+        </Option>
+      </Option>
       <Option type="bool" value="true" name="outputs_collapsed"/>
       <Option type="bool" value="true" name="parameters_collapsed"/>
       <Option type="Map" name="params">
@@ -258,7 +284,7 @@
       <Option name="dependencies"/>
       <Option type="QString" value="gdal:rasterize_over_fixed_value_3" name="id"/>
       <Option name="outputs"/>
-      <Option type="bool" value="true" name="outputs_collapsed"/>
+      <Option type="bool" value="false" name="outputs_collapsed"/>
       <Option type="bool" value="true" name="parameters_collapsed"/>
       <Option type="Map" name="params">
         <Option type="List" name="ADD">
@@ -689,6 +715,18 @@
       <Option type="double" value="-1.7976931348623157e+308" name="min"/>
       <Option type="QString" value="embarcationcost" name="name"/>
       <Option type="QString" value="number" name="parameter_type"/>
+    </Option>
+    <Option type="Map" name="gdal:rasterize_1:Cost_RASTER">
+      <Option type="bool" value="true" name="create_by_default"/>
+      <Option type="invalid" name="default"/>
+      <Option type="invalid" name="defaultGui"/>
+      <Option type="QString" value="Cost_RASTER" name="description"/>
+      <Option type="int" value="0" name="flags"/>
+      <Option type="QString" value="" name="help"/>
+      <Option name="metadata"/>
+      <Option type="QString" value="gdal:rasterize_1:Cost_RASTER" name="name"/>
+      <Option type="QString" value="rasterDestination" name="parameter_type"/>
+      <Option type="bool" value="false" name="supports_non_file_outputs"/>
     </Option>
     <Option type="Map" name="lakepolys">
       <Option name="data_types"/>
