@@ -16,11 +16,11 @@
         <Option type="bool" value="true" name="outputs_collapsed"/>
         <Option type="bool" value="true" name="parameters_collapsed"/>
       </Option>
-      <Option type="QString" value="rasterize land" name="component_description"/>
-      <Option type="double" value="30" name="component_height"/>
-      <Option type="double" value="728.4701296225438" name="component_pos_x"/>
-      <Option type="double" value="658.8023346445968" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="QString" value="rasterize land surface" name="component_description"/>
+      <Option type="double" value="33.02520765476811" name="component_height"/>
+      <Option type="double" value="836.3692026426052" name="component_pos_x"/>
+      <Option type="double" value="620.9872389599961" name="component_pos_y"/>
+      <Option type="double" value="125.37821118238742" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="gdal:rasterize_1" name="id"/>
       <Option name="outputs"/>
@@ -85,8 +85,8 @@
         </Option>
         <Option type="List" name="NODATA">
           <Option type="Map">
-            <Option type="QString" value="waterfriction" name="parameter_name"/>
-            <Option type="int" value="0" name="source"/>
+            <Option type="int" value="2" name="source"/>
+            <Option type="double" value="0" name="static_value"/>
           </Option>
         </Option>
         <Option type="List" name="OPTIONS">
@@ -131,11 +131,11 @@
         <Option type="bool" value="true" name="outputs_collapsed"/>
         <Option type="bool" value="true" name="parameters_collapsed"/>
       </Option>
-      <Option type="QString" value="Rasterize (overwrite with fixed value)" name="component_description"/>
-      <Option type="double" value="35.647152000000006" name="component_height"/>
-      <Option type="double" value="390.6083578611114" name="component_pos_x"/>
-      <Option type="double" value="907.7773143512135" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="QString" value="Embarcation Rasterize (overwrite with fixed value)" name="component_description"/>
+      <Option type="double" value="75.70351235869104" name="component_height"/>
+      <Option type="double" value="455.95359802125" name="component_pos_x"/>
+      <Option type="double" value="670.9006243244235" name="component_pos_y"/>
+      <Option type="double" value="125.22812733044304" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="gdal:rasterize_over_fixed_value_1" name="id"/>
       <Option name="outputs"/>
@@ -150,8 +150,8 @@
         </Option>
         <Option type="List" name="BURN">
           <Option type="Map">
-            <Option type="QString" value="embarcationcost" name="parameter_name"/>
-            <Option type="int" value="0" name="source"/>
+            <Option type="QString" value=" @embarcationcost  /  @Raster_layer_properties_PIXEL_WIDTH " name="expression"/>
+            <Option type="int" value="3" name="source"/>
           </Option>
         </Option>
         <Option type="List" name="EXTRA">
@@ -176,6 +176,184 @@
         </Option>
       </Option>
     </Option>
+    <Option type="Map" name="gdal:rasterize_over_fixed_value_2">
+      <Option type="bool" value="true" name="active"/>
+      <Option name="alg_config"/>
+      <Option type="QString" value="gdal:rasterize_over_fixed_value" name="alg_id"/>
+      <Option type="QString" value="" name="color"/>
+      <Option type="Map" name="comment">
+        <Option type="QString" value="" name="color"/>
+        <Option type="QString" value="" name="component_description"/>
+        <Option type="double" value="60" name="component_height"/>
+        <Option type="double" value="691.0920426240175" name="component_pos_x"/>
+        <Option type="double" value="902.8983984939968" name="component_pos_y"/>
+        <Option type="double" value="100" name="component_width"/>
+        <Option type="bool" value="true" name="outputs_collapsed"/>
+        <Option type="bool" value="true" name="parameters_collapsed"/>
+      </Option>
+      <Option type="QString" value="Rivers Rasterize (overwrite with fixed value)" name="component_description"/>
+      <Option type="double" value="52.1848561349658" name="component_height"/>
+      <Option type="double" value="434.62149973501334" name="component_pos_x"/>
+      <Option type="double" value="797.6464183071826" name="component_pos_y"/>
+      <Option type="double" value="151.59667752371075" name="component_width"/>
+      <Option name="dependencies"/>
+      <Option type="QString" value="gdal:rasterize_over_fixed_value_2" name="id"/>
+      <Option name="outputs"/>
+      <Option type="bool" value="true" name="outputs_collapsed"/>
+      <Option type="bool" value="true" name="parameters_collapsed"/>
+      <Option type="Map" name="params">
+        <Option type="List" name="ADD">
+          <Option type="Map">
+            <Option type="int" value="2" name="source"/>
+            <Option type="bool" value="false" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="BURN">
+          <Option type="Map">
+            <Option type="QString" value="waterfriction" name="parameter_name"/>
+            <Option type="int" value="0" name="source"/>
+          </Option>
+        </Option>
+        <Option type="List" name="EXTRA">
+          <Option type="Map">
+            <Option type="int" value="2" name="source"/>
+            <Option type="QString" value="" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT">
+          <Option type="Map">
+            <Option type="QString" value="riverscoasts" name="parameter_name"/>
+            <Option type="int" value="0" name="source"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT_RASTER">
+          <Option type="Map">
+            <Option type="QString" value="gdal:rasterize_over_fixed_value_1" name="child_id"/>
+            <Option type="QString" value="OUTPUT" name="output_name"/>
+            <Option type="int" value="1" name="source"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
+    <Option type="Map" name="gdal:rasterize_over_fixed_value_3">
+      <Option type="bool" value="true" name="active"/>
+      <Option name="alg_config"/>
+      <Option type="QString" value="gdal:rasterize_over_fixed_value" name="alg_id"/>
+      <Option type="QString" value="" name="color"/>
+      <Option type="Map" name="comment">
+        <Option type="QString" value="" name="color"/>
+        <Option type="QString" value="" name="component_description"/>
+        <Option type="double" value="60" name="component_height"/>
+        <Option type="double" value="722.5206691159411" name="component_pos_x"/>
+        <Option type="double" value="913.8647882876393" name="component_pos_y"/>
+        <Option type="double" value="100" name="component_width"/>
+        <Option type="bool" value="true" name="outputs_collapsed"/>
+        <Option type="bool" value="true" name="parameters_collapsed"/>
+      </Option>
+      <Option type="QString" value="Sea Rasterize (overwrite with fixed value)" name="component_description"/>
+      <Option type="double" value="36.05041530953622" name="component_height"/>
+      <Option type="double" value="706.0499335052043" name="component_pos_x"/>
+      <Option type="double" value="1002.2260980059815" name="component_pos_y"/>
+      <Option type="double" value="200" name="component_width"/>
+      <Option name="dependencies"/>
+      <Option type="QString" value="gdal:rasterize_over_fixed_value_3" name="id"/>
+      <Option name="outputs"/>
+      <Option type="bool" value="true" name="outputs_collapsed"/>
+      <Option type="bool" value="true" name="parameters_collapsed"/>
+      <Option type="Map" name="params">
+        <Option type="List" name="ADD">
+          <Option type="Map">
+            <Option type="int" value="2" name="source"/>
+            <Option type="bool" value="false" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="BURN">
+          <Option type="Map">
+            <Option type="QString" value="waterfriction" name="parameter_name"/>
+            <Option type="int" value="0" name="source"/>
+          </Option>
+        </Option>
+        <Option type="List" name="EXTRA">
+          <Option type="Map">
+            <Option type="int" value="2" name="source"/>
+            <Option type="QString" value="" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT">
+          <Option type="Map">
+            <Option type="QString" value="native:difference_1" name="child_id"/>
+            <Option type="QString" value="OUTPUT" name="output_name"/>
+            <Option type="int" value="1" name="source"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT_RASTER">
+          <Option type="Map">
+            <Option type="QString" value="gdal:rasterize_over_fixed_value_4" name="child_id"/>
+            <Option type="QString" value="OUTPUT" name="output_name"/>
+            <Option type="int" value="1" name="source"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
+    <Option type="Map" name="gdal:rasterize_over_fixed_value_4">
+      <Option type="bool" value="true" name="active"/>
+      <Option name="alg_config"/>
+      <Option type="QString" value="gdal:rasterize_over_fixed_value" name="alg_id"/>
+      <Option type="QString" value="" name="color"/>
+      <Option type="Map" name="comment">
+        <Option type="QString" value="" name="color"/>
+        <Option type="QString" value="" name="component_description"/>
+        <Option type="double" value="60" name="component_height"/>
+        <Option type="double" value="813.2768987589832" name="component_pos_x"/>
+        <Option type="double" value="880.5875040851905" name="component_pos_y"/>
+        <Option type="double" value="100" name="component_width"/>
+        <Option type="bool" value="true" name="outputs_collapsed"/>
+        <Option type="bool" value="true" name="parameters_collapsed"/>
+      </Option>
+      <Option type="QString" value="Lake Rasterize (overwrite with fixed value)" name="component_description"/>
+      <Option type="double" value="30" name="component_height"/>
+      <Option type="double" value="466.050126226937" name="component_pos_x"/>
+      <Option type="double" value="930.6295168431382" name="component_pos_y"/>
+      <Option type="double" value="200" name="component_width"/>
+      <Option name="dependencies"/>
+      <Option type="QString" value="gdal:rasterize_over_fixed_value_4" name="id"/>
+      <Option name="outputs"/>
+      <Option type="bool" value="true" name="outputs_collapsed"/>
+      <Option type="bool" value="true" name="parameters_collapsed"/>
+      <Option type="Map" name="params">
+        <Option type="List" name="ADD">
+          <Option type="Map">
+            <Option type="int" value="2" name="source"/>
+            <Option type="bool" value="false" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="BURN">
+          <Option type="Map">
+            <Option type="QString" value="waterfriction" name="parameter_name"/>
+            <Option type="int" value="0" name="source"/>
+          </Option>
+        </Option>
+        <Option type="List" name="EXTRA">
+          <Option type="Map">
+            <Option type="int" value="2" name="source"/>
+            <Option type="QString" value="" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT">
+          <Option type="Map">
+            <Option type="QString" value="lakepolys" name="parameter_name"/>
+            <Option type="int" value="0" name="source"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT_RASTER">
+          <Option type="Map">
+            <Option type="QString" value="gdal:rasterize_over_fixed_value_2" name="child_id"/>
+            <Option type="QString" value="OUTPUT" name="output_name"/>
+            <Option type="int" value="1" name="source"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
     <Option type="Map" name="native:buffer_1">
       <Option type="bool" value="true" name="active"/>
       <Option name="alg_config"/>
@@ -193,8 +371,8 @@
       </Option>
       <Option type="QString" value="Buffer" name="component_description"/>
       <Option type="double" value="37.78197247736625" name="component_height"/>
-      <Option type="double" value="465.13351047627526" name="component_pos_x"/>
-      <Option type="double" value="541.4494352133853" name="component_pos_y"/>
+      <Option type="double" value="580.0914013574621" name="component_pos_x"/>
+      <Option type="double" value="374.05461164955176" name="component_pos_y"/>
       <Option type="double" value="200" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="native:buffer_1" name="id"/>
@@ -248,6 +426,81 @@
         </Option>
       </Option>
     </Option>
+    <Option type="Map" name="native:difference_1">
+      <Option type="bool" value="true" name="active"/>
+      <Option name="alg_config"/>
+      <Option type="QString" value="native:difference" name="alg_id"/>
+      <Option type="QString" value="" name="color"/>
+      <Option type="Map" name="comment">
+        <Option type="QString" value="" name="color"/>
+        <Option type="QString" value="" name="component_description"/>
+        <Option type="double" value="60" name="component_height"/>
+        <Option type="double" value="1330.4192603316706" name="component_pos_x"/>
+        <Option type="double" value="317.0165160205796" name="component_pos_y"/>
+        <Option type="double" value="100" name="component_width"/>
+        <Option type="bool" value="true" name="outputs_collapsed"/>
+        <Option type="bool" value="true" name="parameters_collapsed"/>
+      </Option>
+      <Option type="QString" value="Difference" name="component_description"/>
+      <Option type="double" value="30" name="component_height"/>
+      <Option type="double" value="1111.7638131272672" name="component_pos_x"/>
+      <Option type="double" value="547.3105089653407" name="component_pos_y"/>
+      <Option type="double" value="122.35300352761942" name="component_width"/>
+      <Option name="dependencies"/>
+      <Option type="QString" value="native:difference_1" name="id"/>
+      <Option name="outputs"/>
+      <Option type="bool" value="true" name="outputs_collapsed"/>
+      <Option type="bool" value="true" name="parameters_collapsed"/>
+      <Option type="Map" name="params">
+        <Option type="List" name="INPUT">
+          <Option type="Map">
+            <Option type="QString" value="native:extenttolayer_1" name="child_id"/>
+            <Option type="QString" value="OUTPUT" name="output_name"/>
+            <Option type="int" value="1" name="source"/>
+          </Option>
+        </Option>
+        <Option type="List" name="OVERLAY">
+          <Option type="Map">
+            <Option type="QString" value="riverscoasts (2)" name="parameter_name"/>
+            <Option type="int" value="0" name="source"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
+    <Option type="Map" name="native:extenttolayer_1">
+      <Option type="bool" value="true" name="active"/>
+      <Option name="alg_config"/>
+      <Option type="QString" value="native:extenttolayer" name="alg_id"/>
+      <Option type="QString" value="" name="color"/>
+      <Option type="Map" name="comment">
+        <Option type="QString" value="" name="color"/>
+        <Option type="QString" value="" name="component_description"/>
+        <Option type="double" value="60" name="component_height"/>
+        <Option type="double" value="1404.604377726241" name="component_pos_x"/>
+        <Option type="double" value="990.7975678749244" name="component_pos_y"/>
+        <Option type="double" value="100" name="component_width"/>
+        <Option type="bool" value="true" name="outputs_collapsed"/>
+        <Option type="bool" value="true" name="parameters_collapsed"/>
+      </Option>
+      <Option type="QString" value="Create layer from extent" name="component_description"/>
+      <Option type="double" value="57.22686889291265" name="component_height"/>
+      <Option type="double" value="1265.6127320973972" name="component_pos_x"/>
+      <Option type="double" value="287.0586733198258" name="component_pos_y"/>
+      <Option type="double" value="104.20175759901099" name="component_width"/>
+      <Option name="dependencies"/>
+      <Option type="QString" value="native:extenttolayer_1" name="id"/>
+      <Option name="outputs"/>
+      <Option type="bool" value="true" name="outputs_collapsed"/>
+      <Option type="bool" value="true" name="parameters_collapsed"/>
+      <Option type="Map" name="params">
+        <Option type="List" name="INPUT">
+          <Option type="Map">
+            <Option type="QString" value="riverscoasts (2)" name="parameter_name"/>
+            <Option type="int" value="0" name="source"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
     <Option type="Map" name="native:mergevectorlayers_1">
       <Option type="bool" value="true" name="active"/>
       <Option name="alg_config"/>
@@ -264,10 +517,10 @@
         <Option type="bool" value="true" name="parameters_collapsed"/>
       </Option>
       <Option type="QString" value="Merge vector layers" name="component_description"/>
-      <Option type="double" value="30" name="component_height"/>
-      <Option type="double" value="350.34338407253637" name="component_pos_x"/>
-      <Option type="double" value="264.2678786916898" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="double" value="52.030998197280155" name="component_height"/>
+      <Option type="double" value="524.2985969284571" name="component_pos_x"/>
+      <Option type="double" value="266.11872581480935" name="component_pos_y"/>
+      <Option type="double" value="113.21121922283572" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="native:mergevectorlayers_1" name="id"/>
       <Option name="outputs"/>
@@ -290,6 +543,11 @@
             <Option type="QString" value="OUTPUT" name="output_name"/>
             <Option type="int" value="1" name="source"/>
           </Option>
+          <Option type="Map">
+            <Option type="QString" value="native:polygonstolines_2" name="child_id"/>
+            <Option type="QString" value="OUTPUT" name="output_name"/>
+            <Option type="int" value="1" name="source"/>
+          </Option>
         </Option>
       </Option>
     </Option>
@@ -308,10 +566,10 @@
         <Option type="bool" value="true" name="outputs_collapsed"/>
         <Option type="bool" value="true" name="parameters_collapsed"/>
       </Option>
-      <Option type="QString" value="Polygons to lines" name="component_description"/>
+      <Option type="QString" value="Country Polygons to lines" name="component_description"/>
       <Option type="double" value="38.84938271604938" name="component_height"/>
-      <Option type="double" value="388.9094257291399" name="component_pos_x"/>
-      <Option type="double" value="156.7853443229588" name="component_pos_y"/>
+      <Option type="double" value="817.4805101546171" name="component_pos_x"/>
+      <Option type="double" value="108.3820218466696" name="component_pos_y"/>
       <Option type="double" value="200" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="native:polygonstolines_1" name="id"/>
@@ -322,6 +580,40 @@
         <Option type="List" name="INPUT">
           <Option type="Map">
             <Option type="QString" value="riverscoasts (2)" name="parameter_name"/>
+            <Option type="int" value="0" name="source"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
+    <Option type="Map" name="native:polygonstolines_2">
+      <Option type="bool" value="true" name="active"/>
+      <Option name="alg_config"/>
+      <Option type="QString" value="native:polygonstolines" name="alg_id"/>
+      <Option type="QString" value="" name="color"/>
+      <Option type="Map" name="comment">
+        <Option type="QString" value="" name="color"/>
+        <Option type="QString" value="" name="component_description"/>
+        <Option type="double" value="60" name="component_height"/>
+        <Option type="double" value="1708.7994586079224" name="component_pos_x"/>
+        <Option type="double" value="689.9768793263087" name="component_pos_y"/>
+        <Option type="double" value="100" name="component_width"/>
+        <Option type="bool" value="true" name="outputs_collapsed"/>
+        <Option type="bool" value="true" name="parameters_collapsed"/>
+      </Option>
+      <Option type="QString" value="Lake Polygons to lines" name="component_description"/>
+      <Option type="double" value="38.84938271604938" name="component_height"/>
+      <Option type="double" value="349.033468986839" name="component_pos_x"/>
+      <Option type="double" value="192.70208520846444" name="component_pos_y"/>
+      <Option type="double" value="200" name="component_width"/>
+      <Option name="dependencies"/>
+      <Option type="QString" value="native:polygonstolines_2" name="id"/>
+      <Option name="outputs"/>
+      <Option type="bool" value="true" name="outputs_collapsed"/>
+      <Option type="bool" value="true" name="parameters_collapsed"/>
+      <Option type="Map" name="params">
+        <Option type="List" name="INPUT">
+          <Option type="Map">
+            <Option type="QString" value="lakepolys" name="parameter_name"/>
             <Option type="int" value="0" name="source"/>
           </Option>
         </Option>
@@ -344,9 +636,9 @@
       </Option>
       <Option type="QString" value="Raster layer properties" name="component_description"/>
       <Option type="double" value="49.644444444444446" name="component_height"/>
-      <Option type="double" value="623.2471344007857" name="component_pos_x"/>
-      <Option type="double" value="316.40450806404175" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="double" value="863.2469416790532" name="component_pos_x"/>
+      <Option type="double" value="272.03479579411" name="component_pos_y"/>
+      <Option type="double" value="153.61348262688955" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="native:rasterlayerproperties_1" name="id"/>
       <Option name="outputs"/>
@@ -397,6 +689,17 @@
       <Option type="double" value="-1.7976931348623157e+308" name="min"/>
       <Option type="QString" value="embarcationcost" name="name"/>
       <Option type="QString" value="number" name="parameter_type"/>
+    </Option>
+    <Option type="Map" name="lakepolys">
+      <Option name="data_types"/>
+      <Option type="invalid" name="default"/>
+      <Option type="invalid" name="defaultGui"/>
+      <Option type="QString" value="Lake polys" name="description"/>
+      <Option type="int" value="0" name="flags"/>
+      <Option type="QString" value="" name="help"/>
+      <Option name="metadata"/>
+      <Option type="QString" value="lakepolys" name="name"/>
+      <Option type="QString" value="vector" name="parameter_type"/>
     </Option>
     <Option type="Map" name="rivermovementspeed">
       <Option type="int" value="1" name="data_type"/>
@@ -480,9 +783,9 @@
       </Option>
       <Option type="QString" value="dtm" name="component_description"/>
       <Option type="double" value="45.29536000000002" name="component_height"/>
-      <Option type="double" value="657.8469758139037" name="component_pos_x"/>
-      <Option type="double" value="178.68835537038032" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="double" value="827.2586044809159" name="component_pos_x"/>
+      <Option type="double" value="184.73877067991646" name="component_pos_y"/>
+      <Option type="double" value="87.05891422199193" name="component_width"/>
       <Option type="QString" value="dtm" name="name"/>
       <Option type="bool" value="true" name="outputs_collapsed"/>
       <Option type="bool" value="true" name="parameters_collapsed"/>
@@ -501,10 +804,31 @@
       </Option>
       <Option type="QString" value="embarcationcost" name="component_description"/>
       <Option type="double" value="38.84938271604944" name="component_height"/>
-      <Option type="double" value="302.4542299387424" name="component_pos_x"/>
-      <Option type="double" value="633.6085370506798" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="double" value="436.571769300127" name="component_pos_x"/>
+      <Option type="double" value="446.04566245505913" name="component_pos_y"/>
+      <Option type="double" value="149.57987242053213" name="component_width"/>
       <Option type="QString" value="embarcationcost" name="name"/>
+      <Option type="bool" value="true" name="outputs_collapsed"/>
+      <Option type="bool" value="true" name="parameters_collapsed"/>
+    </Option>
+    <Option type="Map" name="lakepolys">
+      <Option type="QString" value="" name="color"/>
+      <Option type="Map" name="comment">
+        <Option type="QString" value="" name="color"/>
+        <Option type="QString" value="" name="component_description"/>
+        <Option type="double" value="60" name="component_height"/>
+        <Option type="double" value="339.15955211933147" name="component_pos_x"/>
+        <Option type="double" value="-24.831948968212835" name="component_pos_y"/>
+        <Option type="double" value="100" name="component_width"/>
+        <Option type="bool" value="true" name="outputs_collapsed"/>
+        <Option type="bool" value="true" name="parameters_collapsed"/>
+      </Option>
+      <Option type="QString" value="lakepolys" name="component_description"/>
+      <Option type="double" value="44.68733213152012" name="component_height"/>
+      <Option type="double" value="225.62285585013873" name="component_pos_x"/>
+      <Option type="double" value="442.4786048557799" name="component_pos_y"/>
+      <Option type="double" value="93.19325204299301" name="component_width"/>
+      <Option type="QString" value="lakepolys" name="name"/>
       <Option type="bool" value="true" name="outputs_collapsed"/>
       <Option type="bool" value="true" name="parameters_collapsed"/>
     </Option>
@@ -521,10 +845,10 @@
         <Option type="bool" value="true" name="parameters_collapsed"/>
       </Option>
       <Option type="QString" value="rivermovementspeed" name="component_description"/>
-      <Option type="double" value="30" name="component_height"/>
-      <Option type="double" value="1420.63573638463" name="component_pos_x"/>
-      <Option type="double" value="599.114267803133" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="double" value="58.23527144450213" name="component_height"/>
+      <Option type="double" value="952.736952447168" name="component_pos_x"/>
+      <Option type="double" value="526.5092840886991" name="component_pos_y"/>
+      <Option type="double" value="111.26057546013635" name="component_width"/>
       <Option type="QString" value="rivermovementspeed" name="name"/>
       <Option type="bool" value="true" name="outputs_collapsed"/>
       <Option type="bool" value="true" name="parameters_collapsed"/>
@@ -543,9 +867,9 @@
       </Option>
       <Option type="QString" value="riverscoasts" name="component_description"/>
       <Option type="double" value="34.424691358024695" name="component_height"/>
-      <Option type="double" value="106.54455173892843" name="component_pos_x"/>
-      <Option type="double" value="346.1716126676896" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="double" value="289.04254590586544" name="component_pos_x"/>
+      <Option type="double" value="252.75250717221752" name="component_pos_y"/>
+      <Option type="double" value="81.12039559440899" name="component_width"/>
       <Option type="QString" value="riverscoasts" name="name"/>
       <Option type="bool" value="true" name="outputs_collapsed"/>
       <Option type="bool" value="true" name="parameters_collapsed"/>
@@ -564,9 +888,9 @@
       </Option>
       <Option type="QString" value="riverscoasts (2)" name="component_description"/>
       <Option type="double" value="35.89958847736626" name="component_height"/>
-      <Option type="double" value="920.002832134939" name="component_pos_x"/>
-      <Option type="double" value="55.82062070706019" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="double" value="1150.9270164489026" name="component_pos_x"/>
+      <Option type="double" value="75.98867173884736" name="component_pos_y"/>
+      <Option type="double" value="109.24377035695785" name="component_width"/>
       <Option type="QString" value="riverscoasts (2)" name="name"/>
       <Option type="bool" value="true" name="outputs_collapsed"/>
       <Option type="bool" value="true" name="parameters_collapsed"/>
@@ -584,10 +908,10 @@
         <Option type="bool" value="true" name="parameters_collapsed"/>
       </Option>
       <Option type="QString" value="walkingtspeed" name="component_description"/>
-      <Option type="double" value="31.945679012345696" name="component_height"/>
-      <Option type="double" value="1355.5560650990737" name="component_pos_x"/>
-      <Option type="double" value="527.0802759496416" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="double" value="48.08011983777536" name="component_height"/>
+      <Option type="double" value="961.2706674276345" name="component_pos_x"/>
+      <Option type="double" value="456.49209733838654" name="component_pos_y"/>
+      <Option type="double" value="87.05891422199193" name="component_width"/>
       <Option type="QString" value="walkingtspeed" name="name"/>
       <Option type="bool" value="true" name="outputs_collapsed"/>
       <Option type="bool" value="true" name="parameters_collapsed"/>
@@ -606,9 +930,9 @@
       </Option>
       <Option type="QString" value="waterfriction" name="component_description"/>
       <Option type="double" value="30" name="component_height"/>
-      <Option type="double" value="1323.2345085510954" name="component_pos_x"/>
-      <Option type="double" value="467.30651619789666" name="component_pos_y"/>
-      <Option type="double" value="200" name="component_width"/>
+      <Option type="double" value="776.6803255896634" name="component_pos_x"/>
+      <Option type="double" value="756.7180485040425" name="component_pos_y"/>
+      <Option type="double" value="121.34460097603007" name="component_width"/>
       <Option type="QString" value="waterfriction" name="name"/>
       <Option type="bool" value="true" name="outputs_collapsed"/>
       <Option type="bool" value="true" name="parameters_collapsed"/>
