@@ -177,7 +177,7 @@
         </Option>
         <Option type="List" name="BURN">
           <Option type="Map">
-            <Option type="QString" value=" @embarcationcost  /  @Raster_layer_properties_PIXEL_WIDTH " name="expression"/>
+            <Option type="QString" value="( @embarcationcost  /  @Raster_layer_properties_PIXEL_WIDTH ) / 2 " name="expression"/>
             <Option type="int" value="3" name="source"/>
           </Option>
         </Option>
@@ -220,8 +220,8 @@
       </Option>
       <Option type="QString" value="Rivers Rasterize (overwrite with fixed value)" name="component_description"/>
       <Option type="double" value="81.34539062575203" name="component_height"/>
-      <Option type="double" value="1650.4044047117604" name="component_pos_x"/>
-      <Option type="double" value="947.3053088688297" name="component_pos_y"/>
+      <Option type="double" value="1651.757581899469" name="component_pos_x"/>
+      <Option type="double" value="932.4203598040365" name="component_pos_y"/>
       <Option type="double" value="151.59667752371075" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="gdal:rasterize_over_fixed_value_2" name="id"/>
@@ -280,8 +280,8 @@
       </Option>
       <Option type="QString" value="Sea Rasterize (overwrite with fixed value)" name="component_description"/>
       <Option type="double" value="30" name="component_height"/>
-      <Option type="double" value="811.8265619266205" name="component_pos_x"/>
-      <Option type="double" value="911.758882072614" name="component_pos_y"/>
+      <Option type="double" value="884.8981300628778" name="component_pos_x"/>
+      <Option type="double" value="857.6317945642751" name="component_pos_y"/>
       <Option type="double" value="200" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="gdal:rasterize_over_fixed_value_3" name="id"/>
@@ -417,7 +417,7 @@
         </Option>
         <Option type="List" name="DISTANCE">
           <Option type="Map">
-            <Option type="QString" value=" @Raster_layer_properties_PIXEL_WIDTH*2" name="expression"/>
+            <Option type="QString" value=" @Raster_layer_properties_PIXEL_WIDTH * 2" name="expression"/>
             <Option type="int" value="3" name="source"/>
           </Option>
         </Option>
@@ -513,8 +513,8 @@
       </Option>
       <Option type="QString" value="Create layer from extent" name="component_description"/>
       <Option type="double" value="57.22686889291265" name="component_height"/>
-      <Option type="double" value="578.9474680243826" name="component_pos_x"/>
-      <Option type="double" value="634.7506505873318" name="component_pos_y"/>
+      <Option type="double" value="508.5822542635421" name="component_pos_x"/>
+      <Option type="double" value="622.5720558979557" name="component_pos_y"/>
       <Option type="double" value="104.20175759901099" name="component_width"/>
       <Option name="dependencies"/>
       <Option type="QString" value="native:extenttolayer_1" name="id"/>
@@ -884,47 +884,11 @@
         <Option type="Map" name="sink">
           <Option type="bool" value="true" name="active"/>
           <Option type="int" value="1" name="type"/>
-          <Option type="QString" value="C:/Users/au526889/Dropbox/GIS female mobility/david_working/test7.tif" name="val"/>
+          <Option type="QString" value="C:/Users/au526889/Dropbox/GIS female mobility/david_working/friction_test3.tif" name="val"/>
         </Option>
       </Option>
     </Option>
     <Option type="QString" value="Large_lakes_5cc82a4e_7412_441c_94b3_c8e940c8ce9e" name="lakepolys"/>
-    <Option type="QgsProcessingOutputLayerDefinition" name="native:extractbyextent_1:lakes clippeed">
-      <Option type="Map">
-        <Option type="Map" name="create_options">
-          <Option type="QString" value="System" name="fileEncoding"/>
-        </Option>
-        <Option type="Map" name="sink">
-          <Option type="bool" value="true" name="active"/>
-          <Option type="int" value="1" name="type"/>
-          <Option type="QString" value="TEMPORARY_OUTPUT" name="val"/>
-        </Option>
-      </Option>
-    </Option>
-    <Option type="QgsProcessingOutputLayerDefinition" name="native:extractbyextent_2:rivers clipped">
-      <Option type="Map">
-        <Option type="Map" name="create_options">
-          <Option type="QString" value="System" name="fileEncoding"/>
-        </Option>
-        <Option type="Map" name="sink">
-          <Option type="bool" value="true" name="active"/>
-          <Option type="int" value="1" name="type"/>
-          <Option type="QString" value="TEMPORARY_OUTPUT" name="val"/>
-        </Option>
-      </Option>
-    </Option>
-    <Option type="QgsProcessingOutputLayerDefinition" name="native:extractbyextent_3:land extent">
-      <Option type="Map">
-        <Option type="Map" name="create_options">
-          <Option type="QString" value="System" name="fileEncoding"/>
-        </Option>
-        <Option type="Map" name="sink">
-          <Option type="bool" value="true" name="active"/>
-          <Option type="int" value="1" name="type"/>
-          <Option type="QString" value="TEMPORARY_OUTPUT" name="val"/>
-        </Option>
-      </Option>
-    </Option>
     <Option type="double" value="2.058" name="rivermovementspeed"/>
     <Option type="QString" value="rivers_179426df_a085_4db2_bdaa_08f87e7e9b0a" name="riverscoasts"/>
     <Option type="QString" value="countries_rproj_30b66bd1_ab0a_4d2e_90fe_3e3fc697c06b" name="riverscoasts (2)"/>
@@ -1126,8 +1090,8 @@
       </Option>
       <Option type="QString" value="rivermovementspeed" name="component_description"/>
       <Option type="double" value="58.23527144450213" name="component_height"/>
-      <Option type="double" value="471.6367290638872" name="component_pos_x"/>
-      <Option type="double" value="319.69071833926216" name="component_pos_y"/>
+      <Option type="double" value="79.21534462843084" name="component_pos_x"/>
+      <Option type="double" value="399.5281724140619" name="component_pos_y"/>
       <Option type="double" value="111.26057546013635" name="component_width"/>
       <Option type="QString" value="rivermovementspeed" name="name"/>
       <Option type="bool" value="true" name="outputs_collapsed"/>
