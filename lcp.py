@@ -10,7 +10,8 @@ import os
 import json
 from qgis import processing
 from qgis.processing import alg
-from qgis.core import QgsProject
+from qgis.core import (QgsProject,
+                       QgsVectorLayer)
 
 
     
@@ -20,14 +21,14 @@ class leastCostPath:
     def __init__(self,
                 points,
                 dtm,
-                cost_surface,
+                friction,
                 outdir):
         
         self.points = points
         
         self.dtm = dtm
         
-        self.cost_surface = cost_surface
+        self.friction = friction
         
         self.outdir = outdir
         
@@ -49,14 +50,24 @@ class leastCostPath:
             
 
     def buffer(self,
+               pts = None,
                 distance = 25000,
                 segments = 25):
-         buffered = processing.run("native:buffer",{'INPUT':self.points,
+        
+         if pts is None;:
+             pts  =self.points
+        
+         buffered = processing.run("native:buffer",{'INPUT':pts,
                                                     'DISTANCE':distance,
                                                     'SEGMENTS':segments,
                                                     'DISSOLVE':True})
          
-         return buffered
+         count = processing.run('native:countpointsinpolygon',{'POLYGONS':buffered['OUTPUT'],
+                                                               'POINTS':self.points})
+         
+         
+         
+         return count
      
      
     def centroids(self,
@@ -65,7 +76,81 @@ class leastCostPath:
          
          centroids = processing.run("native:centroids",{'INPUT':polys})
          
-         return centroids 
+         return centroids
+     
+     
+    def n_hood(self,
+               distance=100000)
     
-    def pointItereator(self):
+        
+     
+     
+    
+    def point_collector(self,
+                       min_clust=3):
+        pts = QgsVectorLayer(self.nodes,'nodes','ogr')
+        
+        features in pts.getFeatures()
+        
+        
+        for f in features:
+            pass
+        
+            # if f['NUMPOINTS']
+                #run walk 
+        
+        
+    def walk(self,
+             pt,
+             walk_coeff='1.1,6.0,1.9998,-1.9998',
+             l=1,
+             slope_factor,
+             null_cost=0.02,
+             memory = 25000,
+             k = True,
+             n = False):  
+      w = processing.run("grass7:r.walk.points",{'elevation':self.dtm,
+                                                 'friction':self.friction,
+                                                 'start_points':pt,
+                                                 'walk_coeff':walk_coeff,
+                                                 'lambda':l,
+                                                 'slope_factor':slope_factor,
+                                                 'null_cost':null_cost,
+                                                 'memory':memory,
+                                                 '-k':k,
+                                                 '-n':n})
+      
+      #cost = w['output'],direction = w['outdir']
+      
+      return w
+  
+    
+  def lcp(self,
+          cost,
+          direction,
+          start_points,
+          c=False,
+          a=True,
+          n= False
+          d=True,
+          ):
+      
+      d = processing.run("grass7:r.drain",{'input':cost,
+                                           'direction':direction,
+                                           'start_points':start_points,
+                                           '-c':c,
+                                           '-a':a,
+                                           '-n':a,
+                                           '-d':d})
+      # 'output' = raster lcp 'drain' = vector lcp
+      
+      return d
+      
+      
+     
+      
+     
+        
+        
+        
         
