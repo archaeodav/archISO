@@ -134,6 +134,8 @@ class leastCostPath:
              dtm,
              friction,
              pt,
+             cost_out,
+             direction_out,
              walk_coeff='1.1,6.0,1.9998,-1.9998',
              l=1,
              slope_factor,
@@ -144,6 +146,8 @@ class leastCostPath:
       w = processing.run("grass7:r.walk.coords",{'elevation':dtm,
                                                  'friction':friction,
                                                  'start_coordinates':pt,
+                                                 'output':cost_out,
+                                                 'outdir':direction_out,
                                                  'walk_coeff':walk_coeff,
                                                  'lambda':l,
                                                  'slope_factor':slope_factor,
@@ -161,6 +165,8 @@ class leastCostPath:
           cost,
           direction,
           start_points,
+          output,
+          drain,
           c=False,
           a=True,
           n= False
@@ -170,6 +176,8 @@ class leastCostPath:
       d = processing.run("grass7:r.drain",{'input':cost,
                                            'direction':direction,
                                            'start_points':start_points,
+                                           'output':output,
+                                           'drain':drain,
                                            '-c':c,
                                            '-a':a,
                                            '-n':a,
@@ -177,6 +185,10 @@ class leastCostPath:
       # 'output' = raster lcp 'drain' = vector lcp
       
       return d
+  
+    
+  def tidy_up(self):
+      
       
   def run_whole(self):
       
@@ -185,9 +197,39 @@ class leastCostPath:
       
       points = QgsVectorLayer(self.points,'nodes','ogr')
       
+      features = points.getFeatures()
       
-      
-      
+      for feature in features:
+          fid = feature.id()
+          
+          pt = feature.geometry()
+          
+          pt = pt.asPoint()
+          
+          pt_string = '%s,%s' %(pt.x(),pt.y())
+          
+          cost = os.path.join(self.tempdir,
+                              'cost_%s.tif' %(fid))
+          
+          direction = os.path.join(self.tempdir,
+                                   'direction_%s.tif' %(fid))
+          
+          self.walk(dtm,
+                    friction,
+                    pt_string,
+                    cost,
+                    direction)
+          
+          lcp_rast = os.path.join(self.tempdir,
+                                  'lcp_%s.tif' %(fid))
+          
+          lcp_vect = os.path.join(self.outdir,
+                                  'lcp_%s.shp' %(fid))
+          
+          
+          
+          
+          
      
         
         
