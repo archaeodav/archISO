@@ -34,21 +34,20 @@ class leastCostPath:
         
         self.nodes = None
         
+        self.buffers = {}   
         
-        self.nodes = self.centroids(self.buffer()['OUTPUT'])
+        self.heirarch_buffers = {}
+        
+        #self.nodes = self.centroids(self.buffer()['OUTPUT'])
         
         if not os.path.exists(self.outdir):
             os.mkdir(self.outdir)
             
-        
         self.tempdir = os.path.join(self.outdir,'temp')
         
         if not os.path.exists(self.tempdir):
             os.mkdir(self.tempdir)
             
-        
-            
-
     def buffer(self,
                pts = None,
                 distance = 25000,
@@ -65,8 +64,6 @@ class leastCostPath:
          count = processing.run('native:countpointsinpolygon',{'POLYGONS':buffered['OUTPUT'],
                                                                'POINTS':self.points})
          
-         
-         
          return count
      
      
@@ -79,28 +76,63 @@ class leastCostPath:
          return centroids
      
      
-    def n_hood(self,
-               distance=100000)
+    def iterative_buffer(self,
+                         start_distance = 20000,
+                         factor = 2):
+        
+        #get number of points so we know where to stop
+        pts = QgsVectorLayer(self.points,'nodes','ogr')
+        
+        max_points = pts.featureCount()
+        
+        distance = start_distance
+        
+        num_polys = 100000
+        
+        while num_polys >1:
+            b = self.buffer(self.points,
+                     distance = distance)
+            
+            self.buffers[distance]=b
+            
+            b_polys = QgsVectorLayer(b['OUTPUT'],'buff','ogr')
+            
+            num_polys = b_polys.featureCount()
+            
+            distance = distance*factor   
+            
+
+    def heirarchy(self):
+        
+        keys_sorted = list(self.buffers.keys()).sort()
+        
+        #keys_sorted.reverse()
+        
+        n_levels = len(keys_sorted)
+        
+        for idx,key in emumerate(keys_sorted):
+            if idx+1 < n_levels:
+                this_layer = QgsVectorLayer(self.buffers[key],
+                                            'this',
+                                            'ogr')
+                
+                next_layer = QgsVectorLayer(self.buffers[keys_sorted[idx+1]],
+                                            'next',
+                                            'ogr'')
+                                                      
+    def subset(self,
+               in_raster,
+               in_vector):
+        
+        subset = processing.run("gdal:cliprasterbyextent",{'INPUT':in_raster,
+                                                           'EXTENT':in_vector})
+        
+        return subset
     
-        
-     
-     
     
-    def point_collector(self,
-                       min_clust=3):
-        pts = QgsVectorLayer(self.nodes,'nodes','ogr')
-        
-        features in pts.getFeatures()
-        
-        
-        for f in features:
-            pass
-        
-            # if f['NUMPOINTS']
-                #run walk 
-        
-        
     def walk(self,
+             dtm,
+             friction,
              pt,
              walk_coeff='1.1,6.0,1.9998,-1.9998',
              l=1,
@@ -109,9 +141,9 @@ class leastCostPath:
              memory = 25000,
              k = True,
              n = False):  
-      w = processing.run("grass7:r.walk.points",{'elevation':self.dtm,
-                                                 'friction':self.friction,
-                                                 'start_points':pt,
+      w = processing.run("grass7:r.walk.coords",{'elevation':dtm,
+                                                 'friction':friction,
+                                                 'start_coordinates':pt,
                                                  'walk_coeff':walk_coeff,
                                                  'lambda':l,
                                                  'slope_factor':slope_factor,
@@ -146,8 +178,15 @@ class leastCostPath:
       
       return d
       
+  def run_whole(self):
       
-     
+      dtm = self.subset(self.dtm, self.points)
+      friction = self.subset(self.friction,self.points)
+      
+      points = QgsVectorLayer(self.points,'nodes','ogr')
+      
+      
+      
       
      
         
