@@ -206,8 +206,12 @@ class ArchISO:
         if result:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
+            l = lcp.leastCostPath(self.points,
+                                  self.dtm,
+                                  self.friction,
+                                  self.outdir)
             
-            
+            l.run_whole()
             
 
     
