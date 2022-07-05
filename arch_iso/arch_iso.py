@@ -32,6 +32,9 @@ from .arch_iso_dialog import ArchISODialog
 import os.path
 
 
+import lcp
+
+
 class ArchISO:
     """QGIS Plugin Implementation."""
 
@@ -195,35 +198,19 @@ class ArchISO:
         result = self.dlg.exec_()
         # See if OK was pressed
         
-        self.friction_surface = None
-        self.in_raster = None
-        self.rivers_lines = None
-        self.coast_polys = None
-        self.wetlands_polys= None
-        self.lambda_surface = None
-                
+        self.points = self.dlg.pointsFile
+        self.dtm = self.dlg.dtmFile
+        self.friction = self.dlg.frictionFile
+        self.outdir = self.dlg.outdirFile
+
         if result:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
-            pass
+            
+            
+            
 
-    def friction_surface(self,
-                         water_boundary_cost=10,
-                         water_travel_cost = 0.01,
-                         cosnstant = 0.1):
-        '''method takes takes terrain model and other data- e.g. rivers coast
-        and uses them to generate the friction raster. saves this to disk.'''
-        
-        
-        #TODO get properties of DTM
-        #TODO burn in vector data, constant
-        
-        pass
-        
-    def gen_lambda(self,
-                   const=0.02):
-        
-        pass
+    
     
     
     
