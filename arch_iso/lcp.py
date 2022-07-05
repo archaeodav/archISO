@@ -13,6 +13,7 @@ from qgis.processing import alg
 from qgis.core import (QgsProject,
                        QgsVectorLayer)
 
+import shutil
 
     
     
@@ -188,7 +189,7 @@ class leastCostPath:
   
     
     def tidy_up(self):
-      pass
+      shutil.rmtree(self.tempdir)
       
       
     def run_whole(self,
@@ -234,8 +235,10 @@ class leastCostPath:
                            lcp_rast,
                            lcp_vect)
           
-          
-          return drain
+      if tidyup is True:
+          self.tidyup()
+      
+        return drain
           
           
           
