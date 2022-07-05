@@ -228,14 +228,14 @@ class leastCostPath:
           lcp_vect = os.path.join(self.outdir,
                                   'lcp_%s.shp' %(fid))
           
-          self.lcp(walk['output'],
-                   walk['outdir'],
-                   self.points,
-                   lcp_rast,
-                   lcp_vect)
+          drain = self.lcp(walk['output'],
+                           walk['outdir'],
+                           self.points,
+                           lcp_rast,
+                           lcp_vect)
           
           
-          
+          return drain
           
           
           
