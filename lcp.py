@@ -53,7 +53,7 @@ class leastCostPath:
                 distance = 25000,
                 segments = 25):
         
-         if pts is None;:
+         if pts is None:
              pts  =self.points
         
          buffered = processing.run("native:buffer",{'INPUT':pts,
@@ -110,7 +110,7 @@ class leastCostPath:
         
         n_levels = len(keys_sorted)
         
-        for idx,key in emumerate(keys_sorted):
+        '''for idx,key in emumerate(keys_sorted):
             if idx+1 < n_levels:
                 this_layer = QgsVectorLayer(self.buffers[key],
                                             'this',
@@ -118,7 +118,7 @@ class leastCostPath:
                 
                 next_layer = QgsVectorLayer(self.buffers[keys_sorted[idx+1]],
                                             'next',
-                                            'ogr'')
+                                            'ogr')'''
                                                       
     def subset(self,
                in_raster,
@@ -138,7 +138,7 @@ class leastCostPath:
              direction_out,
              walk_coeff='1.1,6.0,1.9998,-1.9998',
              l=1,
-             slope_factor,
+             slope_factor=-0.2125,
              null_cost=0.02,
              memory = 25000,
              k = True,
@@ -161,7 +161,7 @@ class leastCostPath:
       return w
   
     
-  def lcp(self,
+    def lcp(self,
           cost,
           direction,
           start_points,
@@ -169,7 +169,7 @@ class leastCostPath:
           drain,
           c=False,
           a=True,
-          n= False
+          n= False,
           d=True,
           ):
       
@@ -187,10 +187,11 @@ class leastCostPath:
       return d
   
     
-  def tidy_up(self):
+    def tidy_up(self):
+      pass
       
       
-  def run_whole(self):
+    def run_whole(self):
       
       dtm = self.subset(self.dtm, self.points)
       friction = self.subset(self.friction,self.points)
@@ -214,17 +215,25 @@ class leastCostPath:
           direction = os.path.join(self.tempdir,
                                    'direction_%s.tif' %(fid))
           
-          self.walk(dtm,
-                    friction,
-                    pt_string,
-                    cost,
-                    direction)
+          walk = self.walk(dtm,
+                           friction,
+                           pt_string,
+                           cost,
+                           direction)
           
           lcp_rast = os.path.join(self.tempdir,
                                   'lcp_%s.tif' %(fid))
           
           lcp_vect = os.path.join(self.outdir,
                                   'lcp_%s.shp' %(fid))
+          
+          self.lcp(walk['output'],
+                   walk['outdir'],
+                   self.points,
+                   lcp_rast,
+                   lcp_vect)
+          
+          
           
           
           
