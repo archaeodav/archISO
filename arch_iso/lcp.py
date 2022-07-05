@@ -191,7 +191,8 @@ class leastCostPath:
       pass
       
       
-    def run_whole(self):
+    def run_whole(self,
+                  tidyup = True):
       
       dtm = self.subset(self.dtm, self.points)
       friction = self.subset(self.friction,self.points)
@@ -232,6 +233,7 @@ class leastCostPath:
                    self.points,
                    lcp_rast,
                    lcp_vect)
+          
           
           
           
