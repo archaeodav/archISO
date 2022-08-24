@@ -1,2 +1,2 @@
-# archISO
-Qgis plugin for anisotropic distributions and networks. A work in progress
+# ArchISO: A Qgis plugin for anisotropic distribution and network analyses of archaeological distributions.
+ A work in progress
