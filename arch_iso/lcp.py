@@ -150,7 +150,7 @@ class leastCostPath:
                                                            'PROJWIN':in_vector,
                                                            'OUTPUT':output})
         
-        return subset
+        return subset['OUTPUT']
     
     
     def walk(self,
@@ -208,7 +208,7 @@ class leastCostPath:
                                            'drain':drain,
                                            '-c':c,
                                            '-a':a,
-                                           '-n':a,
+                                           '-n':n,
                                            '-d':d})
       # 'output' = raster lcp 'drain' = vector lcp
       
@@ -223,10 +223,10 @@ class leastCostPath:
                   tidyup = True):
       print ('Subsetting DTM')
       print (self.dtm, self.points)
-      dtm = self.subset(self.dtm, self.points,'dtm.tif')['OUTPUT']
+      dtm = self.subset(self.dtm, self.points,'dtm.tif')
       print (dtm)
       print ('Subsetting Friction')
-      friction = self.subset(self.friction,self.points,'friction.tif')['OUTPUT']
+      friction = self.subset(self.friction,self.points,'friction.tif')
       print (friction)
       
       print ('Loading Points')
