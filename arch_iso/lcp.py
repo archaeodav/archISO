@@ -130,17 +130,20 @@ class leastCostPath:
                in_raster,
                in_vector):
                    
-        in_raster = QgsRasterLayer(in_raster,'raster')
+        in_raster = QgsRasterLayer(in_raster,'in_raster', 'gdal')
         
-        print (in_raster)
+        print (in_raster, 
+               in_raster.width(), 
+               in_raster.height(),
+               in_raster.extent())
         
-        in_vector = QgsVectorLayer(in_vector,'vector')
+        in_vector = QgsVectorLayer(in_vector,'in_vector', 'ogr')
         
         print (in_vector)
         
         
-        subset = processing.run("gdal:cliprasterbyextent",{'INPUT':'raster',
-                                                           'EXTENT':'vector'})
+        subset = processing.run("gdal:cliprasterbyextent",{'INPUT':'in_raster',
+                                                           'PROJWIN':'in_vector'})
         
         return subset
     
