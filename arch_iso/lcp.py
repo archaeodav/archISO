@@ -250,6 +250,8 @@ class leastCostPath:
           direction = os.path.join(self.tempdir,
                                    'direction_%s.tif' %(fid))
           
+          print ('Running Walk')
+          
           walk = self.walk(dtm,
                            friction,
                            pt_string,
@@ -261,6 +263,14 @@ class leastCostPath:
           
           lcp_vect = os.path.join(self.outdir,
                                   'lcp_%s.shp' %(fid))
+          
+          
+          wc = QgsRasterLayer(walk['output'])
+          wd = QgsRasterLayer(walk['output'])
+          
+          
+          
+          print(wc.extent, wc.crs, wd.extent, wd.crs)
           
           drain = self.lcp(walk['output'],
                            walk['outdir'],
@@ -275,11 +285,11 @@ class leastCostPath:
           
           
           
-def test():
-    l = leastCostPath(r'C:/Users/au526889/Dropbox/GIS female mobility/test_data/typ1.shp',
-                      r'C:/Users/au526889/Dropbox/GIS female mobility/test_data/50m_dtm.tif',
-                      r'C:/Users/au526889/Dropbox/GIS female mobility/test_data/friction.tif',
-                      r'E:/EBA_MOB_TEST')
+def test(rootdir):
+    l = leastCostPath(os.path.join(rootdir,'typ1.shp'),
+                      os.path.join(rootdir,'50m_dtm.tif'),
+                      os.path.join(rootdir,'friction.tif'),
+                      os.path.join(rootdir,'EBA_MOB_TEST'))
     
     l.run_whole(tidyup=False)
           
