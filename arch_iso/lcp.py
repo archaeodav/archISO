@@ -238,7 +238,7 @@ class leastCostPath:
       if tidyup is True:
           self.tidyup()
       
-        return drain
+      return drain
           
           
           
