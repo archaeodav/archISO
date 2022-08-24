@@ -128,7 +128,8 @@ class leastCostPath:
                                                       
     def subset(self,
                in_raster,
-               in_vector):
+               in_vector,
+               oname):
                    
         in_raster = QgsRasterLayer(in_raster,'in_raster', 'gdal')
         
@@ -141,9 +142,13 @@ class leastCostPath:
         
         print (in_vector)
         
+        output = os.path.join(self.tempdir,oname)
         
-        subset = processing.run("gdal:cliprasterbyextent",{'INPUT':'in_raster',
-                                                           'PROJWIN':'in_vector'})
+        #out_raster = QgsRasterLayer(output,'out_raster', 'gdal')
+        
+        subset = processing.run("gdal:cliprasterbyextent",{'INPUT':in_raster,
+                                                           'PROJWIN':in_vector,
+                                                           'OUTPUT':output})
         
         return subset
     
@@ -161,6 +166,11 @@ class leastCostPath:
              memory = 25000,
              k = True,
              n = False):  
+                 
+      '''dtm = QgsRasterLayer(dtm,'dtm', 'gdal')
+      friction = QgsRasterLayer(friction,'friction', 'gdal')'''
+      
+    
       w = processing.run("grass7:r.walk.coords",{'elevation':dtm,
                                                  'friction':friction,
                                                  'start_coordinates':pt,
@@ -213,9 +223,11 @@ class leastCostPath:
                   tidyup = True):
       print ('Subsetting DTM')
       print (self.dtm, self.points)
-      dtm = self.subset(self.dtm, self.points)
+      dtm = self.subset(self.dtm, self.points,'dtm.tif')['OUTPUT']
+      print (dtm)
       print ('Subsetting Friction')
-      friction = self.subset(self.friction,self.points)
+      friction = self.subset(self.friction,self.points,'friction.tif')['OUTPUT']
+      print (friction)
       
       print ('Loading Points')
       points = QgsVectorLayer(self.points,'nodes','ogr')
