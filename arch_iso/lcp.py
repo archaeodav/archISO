@@ -270,7 +270,9 @@ class leastCostPath:
           
           
           
-          print(wc.extent, wc.crs, wd.extent, wd.crs)
+          print(wc.extent(), wc.crs(), wd.extent(), wd.crs())
+          
+          print ('Running LCP')
           
           drain = self.lcp(walk['output'],
                            walk['outdir'],
@@ -286,7 +288,7 @@ class leastCostPath:
           
           
 def test(rootdir):
-    l = leastCostPath(os.path.join(rootdir,'typ1.shp'),
+    l = leastCostPath(os.path.join(rootdir,'typ2.shp'),
                       os.path.join(rootdir,'50m_dtm.tif'),
                       os.path.join(rootdir,'friction.tif'),
                       os.path.join(rootdir,'EBA_MOB_TEST'))
