@@ -7,14 +7,19 @@ Created on Mon May 23 12:57:24 2022
 
 
 import os
+print ('OK')
 import json
+print ('OK')
 from qgis import processing
+print ('OK')
 from qgis.processing import alg
+print ('OK')
 from qgis.core import (QgsProject,
                        QgsVectorLayer)
+print ('OK')
 
 import shutil
-
+print ('OK')
     
     
 class leastCostPath:
@@ -124,9 +129,18 @@ class leastCostPath:
     def subset(self,
                in_raster,
                in_vector):
+                   
+        in_raster = QgsRasterLayer(in_raster,'raster')
         
-        subset = processing.run("gdal:cliprasterbyextent",{'INPUT':in_raster,
-                                                           'EXTENT':in_vector})
+        print (in_raster)
+        
+        in_vector = QgsVectorLayer(in_vector,'vector')
+        
+        print (in_vector)
+        
+        
+        subset = processing.run("gdal:cliprasterbyextent",{'INPUT':'raster',
+                                                           'EXTENT':'vector'})
         
         return subset
     
@@ -194,14 +208,18 @@ class leastCostPath:
       
     def run_whole(self,
                   tidyup = True):
-      
+      print ('Subsetting DTM')
+      print (self.dtm, self.points)
       dtm = self.subset(self.dtm, self.points)
+      print ('Subsetting Friction')
       friction = self.subset(self.friction,self.points)
       
+      print ('Loading Points')
       points = QgsVectorLayer(self.points,'nodes','ogr')
       
       features = points.getFeatures()
       
+      print ('Iterating points')
       for feature in features:
           fid = feature.id()
           
@@ -242,8 +260,15 @@ class leastCostPath:
           
           
           
+def test():
+    l = leastCostPath(r'C:/Users/au526889/Dropbox/GIS female mobility/test_data/typ1.shp',
+                      r'C:/Users/au526889/Dropbox/GIS female mobility/test_data/50m_dtm.tif',
+                      r'C:/Users/au526889/Dropbox/GIS female mobility/test_data/friction.tif',
+                      r'E:/EBA_MOB_TEST')
+    
+    l.run_whole(tidyup=False)
           
-          
+        
      
         
         
