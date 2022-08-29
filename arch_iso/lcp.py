@@ -7,20 +7,19 @@ Created on Mon May 23 12:57:24 2022
 
 
 import os
-print ('OK')
+
 import json
-print ('OK')
+
 from qgis import processing
-print ('OK')
+
 from qgis.processing import alg
-print ('OK')
+
 from qgis.core import (QgsProject,
                        QgsVectorLayer)
-print ('OK')
+
 
 import shutil
-print ('OK')
-    
+
     
 class leastCostPath:
     
@@ -129,7 +128,8 @@ class leastCostPath:
     def subset(self,
                in_raster,
                in_vector,
-               oname):
+               oname,
+               buff_dist = 10000):
                    
         in_raster = QgsRasterLayer(in_raster,'in_raster', 'gdal')
         
@@ -140,14 +140,25 @@ class leastCostPath:
         
         in_vector = QgsVectorLayer(in_vector,'in_vector', 'ogr')
         
-        print (in_vector)
+        buff_pts = os.path.join(self.tempdir,'buff.shp')
+        
+        buffered = processing.run("native:buffer",{'INPUT':in_vector,
+                                                    'DISTANCE':buff_dist,
+                                                    'SEGMENTS':25,
+                                                    'DISSOLVE':True,
+                                                    'OUTPUT':buff_pts})
+        
+        
+        buffered = QgsVectorLayer(buffered['OUTPUT'],'in_vector', 'ogr')
+        
+        print (buffered.extent())
         
         output = os.path.join(self.tempdir,oname)
         
         #out_raster = QgsRasterLayer(output,'out_raster', 'gdal')
         
         subset = processing.run("gdal:cliprasterbyextent",{'INPUT':in_raster,
-                                                           'PROJWIN':in_vector,
+                                                           'PROJWIN':buffered,
                                                            'OUTPUT':output})
         
         return subset['OUTPUT']
@@ -236,6 +247,9 @@ class leastCostPath:
       
       print ('Iterating points')
       for feature in features:
+          
+          # TODO add a choice of fields in here
+          
           fid = feature.id()
           
           pt = feature.geometry()
@@ -288,7 +302,7 @@ class leastCostPath:
           
           
 def test(rootdir):
-    l = leastCostPath(os.path.join(rootdir,'typ2.shp'),
+    l = leastCostPath(os.path.join(rootdir,'typ1.shp'),
                       os.path.join(rootdir,'50m_dtm.tif'),
                       os.path.join(rootdir,'friction.tif'),
                       os.path.join(rootdir,'EBA_MOB_TEST'))
