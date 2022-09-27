@@ -369,7 +369,7 @@
         <Option type="List" name="DISTANCE">
           <Option type="Map">
             <Option value="2" type="int" name="source"/>
-            <Option value="30" type="double" name="static_value"/>
+            <Option value="55" type="double" name="static_value"/>
           </Option>
         </Option>
         <Option type="List" name="END_CAP_STYLE">
@@ -788,8 +788,8 @@
       </Option>
     </Option>
     <Option value="0.735" type="double" name="land_friction"/>
-    <Option value="C:/Users/au526889/Dropbox/GIS female mobility/david_working/countries_rproj.shp" type="QString" name="land_polys"/>
-    <Option value="E:/cost_paths/rivers/merged_hydro.shp" type="QString" name="water"/>
+    <Option value="countries_rproj_026e651d_b54b_4edb_aa23_9f8f0f3d8e45" type="QString" name="land_polys"/>
+    <Option value="merged_hydro_ac332c7c_cf46_47da_a356_fb626d12936f" type="QString" name="water"/>
   </Option>
   <Option name="groupBoxes"/>
   <Option name="help"/>
