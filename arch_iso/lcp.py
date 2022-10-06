@@ -313,7 +313,7 @@ def test():
         
     l = leastCostPath(r'E:\EBA_MOB_TEST\type_1.shp',
                       r'E:\EBA_MOB_TEST\subset_terrainanalysis_small.tif',
-                      r'E:\EBA_MOB_TEST\friction_fixed.tif',
+                      r'E:\EBA_MOB_TEST\friction_2.tif',
                       r'E:\EBA_MOB_TEST\type_1_test')
     l.run_whole(tidyup=False)
           
