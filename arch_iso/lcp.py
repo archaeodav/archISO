@@ -231,7 +231,8 @@ class leastCostPath:
       
       
     def run_whole(self,
-                  tidyup = True):
+                  tidyup = True,
+                  field_name = 'point_id'):
       print ('Subsetting DTM')
       print (self.dtm, self.points)
       dtm = self.subset(self.dtm, self.points,'dtm.tif')
@@ -249,8 +250,11 @@ class leastCostPath:
       for feature in features:
           
           # TODO add a choice of fields in here
-          
-          fid = feature.id()
+          if field_name is None:
+            fid = feature.id()
+            
+          else:
+            fid = feature[field_name]
           
           pt = feature.geometry()
           
@@ -301,12 +305,16 @@ class leastCostPath:
           
           
           
-def test(rootdir):
-    l = leastCostPath(os.path.join(rootdir,'typ1.shp'),
+def test():
+    '''l = leastCostPath(os.path.join(rootdir,'typ1.shp'),
                       os.path.join(rootdir,'50m_dtm.tif'),
-                      os.path.join(rootdir,'friction.tif'),
-                      os.path.join(rootdir,'EBA_MOB_TEST'))
-    
+                      os.path.join(rootdir,'friction_fixed.tif'),
+                      os.path.join(rootdir,'EBA_MOB_TEST'))'''
+        
+    l = leastCostPath(r'E:\EBA_MOB_TEST\type_1.shp',
+                      r'E:\EBA_MOB_TEST\subset_terrainanalysis_small.tif',
+                      r'E:\EBA_MOB_TEST\friction_fixed.tif',
+                      r'E:\EBA_MOB_TEST\type_1_test')
     l.run_whole(tidyup=False)
           
         
