@@ -311,10 +311,10 @@ def test():
                       os.path.join(rootdir,'friction_fixed.tif'),
                       os.path.join(rootdir,'EBA_MOB_TEST'))'''
         
-    l = leastCostPath(r'E:\EBA_MOB_TEST\type_1.shp',
+    l = leastCostPath(r'E:\EBA_MOB_TEST\type_3.shp',
                       r'E:\EBA_MOB_TEST\subset_terrainanalysis_small.tif',
                       r'E:\EBA_MOB_TEST\friction_2.tif',
-                      r'E:\EBA_MOB_TEST\type_1_test')
+                      r'E:\EBA_MOB_TEST\type_3_test')
     l.run_whole(tidyup=False)
           
         
